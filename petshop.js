@@ -251,3 +251,95 @@ let produto = {
     //fabricante
     //...fabricante
 };
+
+/* array.map()
+itera entre os items da array aplicando a função chamada */
+let arrayExemplo = [2, 3, 4, 5, 7];
+arrayExemplo = arrayExemplo.map(x => x + 5);
+console.log(arrayExemplo);
+
+/* array.filter()
+retorna os itens da matriz que satisfazem uma condição 
+avaliada através da função chamada (deve retornar booleano) */
+let arrayFilter = arrayExemplo.filter(x => x > 9);
+console.log(arrayFilter);
+
+/* array.reduce()
+itera entre os itens da matriz executando uma função
+mantendo o valor da iteração anterior no "acumulador"
+passando valor inicial, o primeiro elemento da matriz é somado
+ao mesmo ao invés de se tornar o valor inicial*/
+let arrayReduce = arrayExemplo.reduce((a, x) => a + x );
+console.log(arrayReduce);
+console.log(`Teste ${arrayReduce}`);
+
+let arrayCidades = [
+    {
+        nome: "São Paulo",
+        pop: 12800000
+    },
+    {
+        nome: "Campinas",
+        pop: 6000000
+    },
+    {
+        nome: "Salvador",
+        pop: 3000000
+    },
+    {
+        nome: "Guaxupé",
+        pop: 60000
+    }
+]
+let somaPop = arrayCidades.reduce((totalPop, populacao) => { return totalPop + populacao.pop},0);
+console.log(somaPop);
+
+/* array.forEach()
+itera entre os elementos da matriz executando a função inserida no loop */
+arrayExemplo.forEach(x => console.log(`Número: ${x}`));
+
+/*Dado um array de cidades, retornar a soma das populações das cidades 
+que possuem mais de 5000000 de habitantes */
+
+let popCidadesGrandes = arrayCidades.filter(cidades => cidades.pop > 5000000)
+                                    .reduce((popTotal, cidades) => {return popTotal + cidades.pop},0);
+
+// let popCidadesGrandes = arrayCidades.reduce((popTotal, cidades) => {
+//     if (cidades.pop > 5000000) {
+//         popTotal + cidades.pop;    
+//     }
+//     return popTotal;
+//     },0);
+// console.log(popCidadesGrandes);
+
+/*For in - For of
+For in para objetos, for of para matrizes e strings
+Objeto dentro do For in é tratado como matriz (valores acessados com []) */
+
+let professor = {
+    nome: "Natália Lira",
+    idade: 21
+}
+
+for (campo in professor) {
+    console.log(`${campo}: ${professor[campo]}`);
+}
+
+/* Verificar se a pessoa tem o CPF usando For in
+Caso não tenha, cadastrar um CPF */
+
+let temCPF = false
+for (campo in professor) {
+    if (campo == "cpf") {
+        temCPF = true;
+        break;
+    }
+}
+if(!temCPF) {
+//    pessoa.cpf = "000.000.000-00";
+}
+
+let alunos = ["Mayara", "Pedro", "Dario", "Laura"];
+for (nome of alunos) {
+    console.log(nome);
+}
